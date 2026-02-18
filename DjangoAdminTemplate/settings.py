@@ -131,6 +131,7 @@ INSTALLED_APPS = [
     'content.apps.ContentConfig',
     'game.apps.GameConfig',
     'account.apps.AccountConfig',
+    'log.apps.LogConfig',
 
 ]
 
