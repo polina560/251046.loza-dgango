@@ -18,8 +18,15 @@ class UserExt(models.Model):
         return f"{self.user.username}'s profile"
 
 class UserBonusItems(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='bonus_items', primary_key=True)
-    bonus = models.OneToOneField(BonusItemModel, on_delete=models.CASCADE, related_name='bonus_items', primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='bonus_items')
+    bonus = models.OneToOneField(BonusItemModel, on_delete=models.CASCADE, related_name='bonus_items')
+
+    constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'bonus_item'],
+                name='unique_user_bonus_item'
+            )
+        ]
 
     count = models.IntegerField(null=True, verbose_name=_('Count'))
     buy_count = models.IntegerField(null=True, verbose_name=_('Buy Count'))
