@@ -130,6 +130,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'content.apps.ContentConfig',
     'game.apps.GameConfig',
+    'account.apps.AccountConfig',
 
 ]
 
@@ -232,3 +233,4 @@ STATIC_URL = 'staticfiles/'
 LOCALE_PATHS = (
     # 'locale',
     os.path.join(BASE_DIR, 'locale'),)
+

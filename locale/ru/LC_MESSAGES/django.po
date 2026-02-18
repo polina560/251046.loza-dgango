@@ -99,7 +99,7 @@ msgstr "Создано системой"
 msgid "Chance"
 msgstr "Шанс в сундуке"
 
-msgid "Position "
+msgid "Position"
 msgstr "Позиция"
 
 
