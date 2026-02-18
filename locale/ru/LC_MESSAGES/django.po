@@ -1,0 +1,107 @@
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-18 11:12+0300\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Created at"
+msgstr "Дата создания"
+
+msgid "Updated at"
+msgstr "Дата изменения"
+
+# приложение Content
+msgid "Content"
+msgstr "Контент"
+
+msgid "Rule Image"
+msgstr "Картинки правил"
+
+msgid "Rule Images"
+msgstr "Картинки правил"
+
+
+msgid "Game Settings"
+msgstr "Игровые настройик"
+
+# модель TextModel
+msgid "Text"
+msgstr "Текст"
+
+msgid "Game"
+msgstr "Игра"
+
+msgid "FAQ"
+msgstr "Вопросы и ответы"
+
+msgid "Texts"
+msgstr "Тексты"
+
+msgid "Key"
+msgstr "Ключ"
+
+msgid "Value"
+msgstr "Значение"
+
+# модель ClanModl
+msgid "Clans"
+msgstr "Кланы"
+
+msgid "Bonus items"
+msgstr "Предметы"
+
+msgid "Title"
+msgstr "Название"
+
+msgid "System Name"
+msgstr "Системное имя"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Answer"
+msgstr "Ответ"
+
+msgid "Question"
+msgstr "Вопрос"
+
+msgid "Number"
+msgstr "Число"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Image"
+msgstr "Изображение"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Price"
+msgstr "Цена"
+
+msgid "Reward"
+msgstr "Размер награды"
+
+msgid "Universal coupon"
+msgstr "Универсальный купон"
+
+msgid "Is shop"
+msgstr "Для лавки"
+
+msgid "Is box"
+msgstr "Для сундука"
+
+msgid "Is system"
+msgstr "Создано системой"
+
+msgid "Chance"
+msgstr "Шанс в сундуке"
+
+msgid "Position "
+msgstr "Позиция"
+
+
+
+
