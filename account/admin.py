@@ -2,13 +2,13 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from account.models import UserExt, UserBonusItems, UserExtra
+from account.models import UserProfile, UserBonusItems, UserExtra
 
 
 # Register your models here.
 
-class UserExtInline(admin.StackedInline):
-    model = UserExt
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
     can_delete = False
     verbose_name_plural = 'Профиль'
 
@@ -22,14 +22,9 @@ class UserExtraInline(admin.StackedInline):
     can_delete = False
     verbose_name_plural = 'Дополнительная информация'
 
-class UserGamesInline(admin.StackedInline):
-    model = UserExtra
-    can_delete = False
-    verbose_name_plural = 'Игра'
-
 
 class CustomUserAdmin(UserAdmin):
-    inlines = (UserExtInline, UserBonusItemsInline, UserExtraInline, UserGamesInline)
+    inlines = (UserProfileInline, UserBonusItemsInline, UserExtraInline)
 
     # Опционально: добавить поля профиля в список отображения пользователей
     list_display = UserAdmin.list_display

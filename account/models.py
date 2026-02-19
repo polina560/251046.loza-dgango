@@ -4,35 +4,41 @@ from django.utils.translation import gettext_lazy as _
 
 from content.models import ClanModel
 from game.models import BonusItemModel
+from rating.models import StagePrizesModel
+
 
 # TODO: изменить название таблицы
-class UserExt(models.Model):
+class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     uid = models.CharField(max_length=255, unique=True, verbose_name='UID')
     rid = models.CharField(max_length=15, unique=True, verbose_name='RID')
 
     remember_token = models.CharField(max_length=100, null=True, verbose_name='Remember Token')
 
-    clan = models.OneToOneField(ClanModel, on_delete=models.CASCADE, related_name='ext', null=True)
+    clan = models.OneToOneField(ClanModel, on_delete=models.CASCADE, related_name='profile', null=True)
 
 
     def __str__(self):
         return f"{self.user.username}'s profile"
 
 class UserBonusItems(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='bonus_items')
-    bonus = models.OneToOneField(BonusItemModel, on_delete=models.CASCADE, related_name='bonus_items')
-
-    constraints = [
-            models.UniqueConstraint(
-                fields=['user', 'bonus_item'],
-                name='unique_user_bonus_item'
-            )
-        ]
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bonus_items')
+    bonus = models.ForeignKey(BonusItemModel, on_delete=models.CASCADE, related_name='bonus_items')
 
     count = models.IntegerField(null=True, verbose_name=_('Count'))
     buy_count = models.IntegerField(null=True, verbose_name=_('Buy Count'))
     drop_count = models.IntegerField(null=True, verbose_name=_('Drop Count'))
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'bonus'],
+                name='unique_user_bonus_item'
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.user.username} - {self.bonus.title} (x{self.count or 0})"
 
 class UserExtra(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='extra')
@@ -51,19 +57,16 @@ class UserExtra(models.Model):
     block_count = models.IntegerField(default=0, verbose_name=_('Block Count'))
     code_fail_count = models.IntegerField(default=0, verbose_name=_('Code Fail Count'))
 
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created At'))
-    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
+    money_gain = models.IntegerField(default=0, verbose_name=_('Money Gain'))
+    money_spent = models.IntegerField(default=0, verbose_name=_('Money Spent'))
 
-class UserGames(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='games')
-
-    started_at = models.DateTimeField(null=True, blank=True, verbose_name=_('Started At'))
-    ended_at = models.DateTimeField(null=True, blank=True, verbose_name=_('Ended At'))
-    paused_at = models.DateTimeField(null=True, blank=True, verbose_name=_('Paused At'))
-    pause_duration = models.IntegerField(null=True, verbose_name=_('Pause Duration'))
-    quest_completed = models.BooleanField(null=True, verbose_name=_('Quests Completed'))
-    status = models.SmallIntegerField(null=True, verbose_name=_('Status'))
-    is_quest = models.BooleanField(default=False, verbose_name=_('Is Quest'))
+    tutorial_completed = models.BooleanField(default=False, verbose_name=_('Tutorial Completed'))
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created At'))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
+
+class UserStagePrizes(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='stage_prizes')
+    stage_prize = models.OneToOneField(StagePrizesModel, on_delete=models.CASCADE, related_name='stage_prizes')
+    received_at = models.DateTimeField(null=True, blank=True, verbose_name=_('Received At'))
+

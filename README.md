@@ -19,3 +19,8 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```shell
 django-admin compilemessages 
 ```
+
+Показать все миграции
+```shell
+python manage.py showmigrations 
+```
