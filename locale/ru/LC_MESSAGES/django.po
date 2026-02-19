@@ -15,6 +15,52 @@ msgstr "Дата изменения"
 msgid "Content"
 msgstr "Контент"
 
+msgid "Log"
+msgstr "Логи"
+
+msgid "Logs"
+msgstr "Логи"
+
+msgid "Coupon"
+msgstr "Купон"
+
+msgid "Coupons"
+msgstr "Купоны"
+
+msgid "User Game"
+msgstr "Логи игр"
+
+msgid "User Games"
+msgstr "Логи игр"
+
+msgid "Start Date"
+msgstr "Дата начала"
+
+msgid "Started At"
+msgstr "Время начала"
+
+msgid "Ended At"
+msgstr "Время окончания"
+
+msgid "Paused At"
+msgstr "Пауза"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "User "
+msgstr "Пользователь"
+
+msgid "Quests Completed"
+msgstr "Выполнен контракт"
+
+msgid "Is Quest"
+msgstr "Контрактная"
+
+msgid "Pause Duration"
+msgstr "Продолжительность паузы"
+
+
 msgid "Rule Image"
 msgstr "Картинки правил"
 

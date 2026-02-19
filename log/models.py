@@ -23,6 +23,8 @@ class UserGames(models.Model):
             models.Index(fields=['started_at']),
             models.Index(fields=['started_at', 'user_id']),
         ]
+        verbose_name = _('User Game')
+        verbose_name_plural = _('User Games')
 
 class CouponModel(models.Model):
     user = models.ForeignKey(
@@ -45,3 +47,5 @@ class CouponModel(models.Model):
         indexes = [
             models.Index(fields=['user']),
         ]
+        verbose_name = _('Coupon')
+        verbose_name_plural = _('Coupons')
