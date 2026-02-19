@@ -55,3 +55,5 @@ class BonusItemLogModel(models.Model):
         verbose_name = _('Bonus item source')
         verbose_name_plural = _('Bonus items source')
 
+
+

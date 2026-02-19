@@ -14,6 +14,8 @@ class StagesModel(models.Model):
     prize_date = models.CharField(_('Prize Date'), max_length=255, null=True, blank=True)
     prize_description = models.TextField(_('Prize Description'), null=True, blank=True)
 
+    winners_sent = models.BooleanField(_('Winners Sent'), default=False)
+
     created_at = models.DateTimeField(_('Created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
 
@@ -25,7 +27,7 @@ class StagesModel(models.Model):
         return self.title
 
 class StagePrizesModel(models.Model):
-    stage = models.OneToOneField(StagesModel, verbose_name=_('Stage'), on_delete=models.CASCADE)
+    stage = models.ForeignKey(StagesModel, verbose_name=_('Stage'), on_delete=models.CASCADE)
 
     image = models.ImageField(verbose_name=_('Image'), upload_to='stage_prizes')
     mini_image = models.ImageField(verbose_name=_('Mini Image'), upload_to='stage_prizes')
