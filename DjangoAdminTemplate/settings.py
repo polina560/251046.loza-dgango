@@ -132,6 +132,7 @@ INSTALLED_APPS = [
     'game.apps.GameConfig',
     'account.apps.AccountConfig',
     'log.apps.LogConfig',
+    'rating.apps.RatingConfig',
 
 ]
 

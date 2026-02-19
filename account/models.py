@@ -11,7 +11,9 @@ class UserExt(models.Model):
     uid = models.CharField(max_length=255, unique=True, verbose_name='UID')
     rid = models.CharField(max_length=15, unique=True, verbose_name='RID')
 
-    clan = models.OneToOneField(ClanModel, on_delete=models.CASCADE, related_name='extra', null=True)
+    remember_token = models.CharField(max_length=100, null=True, verbose_name='Remember Token')
+
+    clan = models.OneToOneField(ClanModel, on_delete=models.CASCADE, related_name='ext', null=True)
 
 
     def __str__(self):
