@@ -17,6 +17,23 @@ class UserProfile(models.Model):
 
     clan = models.OneToOneField(ClanModel, on_delete=models.CASCADE, related_name='profile', null=True)
 
+    referral_code = models.CharField(max_length=20, null=True, verbose_name='Referral Code', unique=True)
+    referred_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='referrals',
+        verbose_name=_('Referred by'),
+        help_text=_('The user who referred this user'),
+        db_column='referred_by_id'
+    )
+    referred_at = models.DateField(null=True, blank=True, verbose_name=_('Referred At'))
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['referred_by']),
+        ]
 
     def __str__(self):
         return f"{self.user.username}'s profile"

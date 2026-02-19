@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from content.models import ClanModel
-from game.models import GameSettingsModel, BonusItemModel
+from game.models import GameSettingsModel, BonusItemModel, BonusItemLogModel
 
 
 # Register your mode
@@ -16,3 +16,7 @@ class BonusItemModelAdmin(admin.ModelAdmin):
     exclude = ('is_system', )
     list_display = ('title', 'system_name', 'price', 'reward', 'is_system', 'is_shop', 'is_box', 'chance')
     search_fields = ('title',)
+
+@admin.register(BonusItemLogModel)
+class BonusItemLogModelAdmin(admin.ModelAdmin):
+    exclude = ('is_system', 'source', 'bonus_item')

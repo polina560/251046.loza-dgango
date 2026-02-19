@@ -133,6 +133,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'log.apps.LogConfig',
     'rating.apps.RatingConfig',
+    'shop.apps.ShopConfig',
 
 ]
 
