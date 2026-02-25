@@ -128,12 +128,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    'content.apps.ContentConfig',
     'game.apps.GameConfig',
-    'account.apps.AccountConfig',
-    'log.apps.LogConfig',
-    'rating.apps.RatingConfig',
-    'shop.apps.ShopConfig',
 
 ]
 
