@@ -20,8 +20,8 @@ class StagesModel(models.Model):
     updated_at = models.DateTimeField(_('Updated at'), auto_now=True)
 
     class Meta:
-        verbose_name = _('Rating')
-        verbose_name_plural = _('Ratings')
+        verbose_name = _('Stage')
+        verbose_name_plural = _('Stages')
 
     def __str__(self):
         return self.title

@@ -19,4 +19,4 @@ class BonusItemModelAdmin(admin.ModelAdmin):
 
 @admin.register(BonusItemLogModel)
 class BonusItemLogModelAdmin(admin.ModelAdmin):
-    exclude = ('is_system', 'source', 'bonus_item')
+    exclude = ('is_system', 'is_reserve')
