@@ -6,6 +6,6 @@ from game.models.stage_prize import StagePrize
 
 
 class UserStagePrizes(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='stage_prizes')
-    stage_prize = models.OneToOneField(StagePrize, on_delete=models.CASCADE, related_name='stage_prizes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='stage_prizes')
+    stage_prize = models.ForeignKey(StagePrize, on_delete=models.CASCADE)
     received_at = models.DateTimeField(null=True, blank=True, verbose_name=_('Received At'))

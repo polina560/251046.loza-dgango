@@ -4,8 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 class Stage(models.Model):
     title = models.CharField(_('Title'), max_length=255)
-    start_at = models.DateField(_('Start Date'), null=True, blank=True)
-    end_at = models.DateField(_('End Date'), null=True, blank=True)
+    start_at = models.DateTimeField(_('Start Date'), null=True, blank=True)
+    end_at = models.DateTimeField(_('End Date'), null=True, blank=True)
     prize_date = models.CharField(_('Prize Date'), max_length=255, null=True, blank=True)
     prize_description = models.TextField(_('Prize Description'), null=True, blank=True)
 

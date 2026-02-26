@@ -168,12 +168,12 @@ WSGI_APPLICATION = 'DjangoAdminTemplate.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql', # Пример для PostgreSQL
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'), # по умолчанию localhost
-        'PORT': os.environ.get('DB_PORT', '5432'),     # по умолчанию 5432
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
 

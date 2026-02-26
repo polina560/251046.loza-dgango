@@ -18,8 +18,20 @@ msgstr "Контент"
 msgid "Log"
 msgstr "Логи"
 
+msgid "Clans rating"
+msgstr "Рейтинг кланов"
+
+msgid "Clan rating"
+msgstr "Рейтинг кланов"
+
 msgid "Logs"
 msgstr "Логи"
+
+msgid "Bonus items"
+msgstr "Журнал предметов"
+
+msgid "Bonus item"
+msgstr "Журнал предметов"
 
 msgid "Rating"
 msgstr "Рейтинг"

@@ -1,5 +1,8 @@
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+from game.models.media import Media
 
 
 class Sale(models.Model):
@@ -15,3 +18,7 @@ class Sale(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def images(self):
+        return Media.objects.filter(model_type=ContentType.objects.get_for_model(self), model_id=self.id)

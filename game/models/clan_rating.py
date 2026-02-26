@@ -6,14 +6,14 @@ from game.models.stage import Stage
 
 
 class ClanRating(models.Model):
-    clan = models.OneToOneField(
+    clan = models.ForeignKey(
         Clan,
         on_delete=models.CASCADE,
         verbose_name=_('Clan'),
         related_name='clan_ratings',
     )
 
-    stage = models.OneToOneField(
+    stage = models.ForeignKey(
         Stage,
         on_delete=models.CASCADE,
         verbose_name=_('Stage'),
@@ -28,4 +28,8 @@ class ClanRating(models.Model):
             name='idx_clan_ratings_stage_total_glory'
         ),
     ]
+
+    class Meta:
+        verbose_name = _('Clan rating')
+        verbose_name_plural = _('Clans rating')
 
