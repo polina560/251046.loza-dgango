@@ -27,3 +27,57 @@ class UserExtra(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created At'))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
+
+    def calc_quests_generation(self):
+        """Аналог calcQuestsGeneration() в Laravel"""
+        from django.utils import timezone
+        from django.conf import settings
+
+        base_quests = getattr(settings, 'BASE_QUESTS', 3)
+
+        if not self.quests_updated_at:
+            self.quests_updated_at = timezone.now()
+            self.quests = base_quests
+            self.save()
+            return
+
+        if self.quests >= base_quests:
+            return
+
+        # Проверяем переход на новый день
+        if self.quests_updated_at.date() < timezone.now().date():
+            self.quests = base_quests
+            self.quests_updated_at = timezone.now()
+            self.save()
+            return
+
+        if self.quests > 0:
+            return
+
+        # Почасовое восстановление
+        time_passed = (timezone.now() - self.quests_updated_at).total_seconds()
+        cooldown = getattr(settings, 'QUESTS_COOLDOWN_HOURS', 1) * 3600
+
+        if time_passed >= cooldown:
+            self.quests += 1
+            self.quests_updated_at = timezone.now()
+            self.save()
+
+    def quests_cooldown(self):
+        """Аналог questsCooldown() в Laravel"""
+        from django.utils import timezone
+        from django.conf import settings
+
+        if self.quests > 0 or not self.quests_updated_at:
+            return 0
+
+        cooldown = getattr(settings, 'QUESTS_COOLDOWN_HOURS', 1) * 3600
+        now = timezone.now()
+
+        if self.quests_updated_at > now:
+            self.quests_updated_at = now
+            self.save()
+            return cooldown
+
+        time_passed = (now - self.quests_updated_at).total_seconds()
+        return max(int(cooldown - time_passed), 0)

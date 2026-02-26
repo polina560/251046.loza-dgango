@@ -7,7 +7,45 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from game.models.sale import Sale
 from game.models.user_game import GamePlatform, UserGameManager
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+
+from game.serializers.profile_serializer import ProfileSerializer
+
+from rest_framework import generics
+
+from game.serializers.sale_serializer import SaleSerializer
+
+
+# class SaleListView(generics.ListAPIView):
+#     """
+#     Возвращает список всех акций.
+#     """
+#     queryset = Sale.objects.all().order_by('position')
+#     serializer_class = SaleSerializer
+#
+#
+# class SaleDetailView(generics.RetrieveAPIView):
+#     """
+#     Возвращает одну акцию по ID.
+#     """
+#     queryset = Sale.objects.all()
+#     serializer_class = SaleSerializer
+
+
+# class ProfileView(APIView):
+#     permission_classes = [IsAuthenticated]
+#
+#     def get(self, request):
+#         serializer = ProfileSerializer(
+#             instance=request.user,
+#             context={'request': request}
+#         )
+#         return Response(serializer.data)
 
 
 

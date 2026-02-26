@@ -1,3 +1,5 @@
+import random
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -72,3 +74,10 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s profile"
+
+    def generate_referral_code(self):
+        """Аналог generateReferralCode() в Laravel"""
+        characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+        code = ''.join(random.choices(characters, k=5))
+        self.referral_code = code
+        self.save()
