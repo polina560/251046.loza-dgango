@@ -62,12 +62,10 @@ class BonusItem(models.Model):
         user_item.count += 1
 
         # TODO: добавить метод instance_activate
-        user_item.activate()
+        user_item.instance_activate()
         user_item.save()
 
-
-        # TODO: добавить метод add_log
-        BonusItemLog.objects.add_log(
+        BonusItemLog.add_log(
             user_id=user.id,
             item_id=self.id,
             source=BonusItemLogChoices.SOURCE_SHOP.value

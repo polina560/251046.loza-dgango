@@ -18,5 +18,10 @@ class BonusItemLog(models.Model):
         verbose_name = _('Bonus item source')
         verbose_name_plural = _('Bonus items source')
 
-
-
+    @classmethod
+    def add_log(cls, user_id, item_id, source, is_reserve=False):
+            return cls.objects.create(
+                user_id=user_id,
+                bonus_item_id=item_id,
+                source=source,
+                is_reserve=is_reserve)
