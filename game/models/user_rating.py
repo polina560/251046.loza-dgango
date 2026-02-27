@@ -54,3 +54,6 @@ class UserRating(models.Model):
 
     def __str__(self):
         return f"{self.user} - Stage {self.stage} - Glory: {self.glory}"
+
+
+

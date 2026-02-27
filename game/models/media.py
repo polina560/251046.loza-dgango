@@ -120,6 +120,19 @@ class Media(models.Model):
     def __str__(self):
         return f"{self.name} ({self.file_name})"
 
+    @property
+    def url(self):
+        """Возвращает URL файла."""
+        from django.core.files.storage import default_storage
+        return default_storage.url(self.file_name)
+
+    def save(self, *args, **kwargs):
+        if not self.name and self.file_name:
+            # Извлекаем имя файла без расширения
+            import os
+            self.name = os.path.splitext(os.path.basename(self.file_name))[0]
+        super().save(*args, **kwargs)
+
     # @property
     # def url(self):
     #     """Получить URL файла"""

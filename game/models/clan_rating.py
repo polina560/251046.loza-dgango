@@ -33,3 +33,6 @@ class ClanRating(models.Model):
         verbose_name = _('Clan rating')
         verbose_name_plural = _('Clans rating')
 
+    def order_by_rating(self):
+        return self.order_by('-total_glory')
+
