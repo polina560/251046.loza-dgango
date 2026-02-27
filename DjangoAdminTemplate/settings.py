@@ -232,3 +232,8 @@ LOCALE_PATHS = (
     # 'locale',
     os.path.join(BASE_DIR, 'locale'),)
 
+
+QUESTS_COOLDOWN_HOURS = 1  # часы до восстановления квеста
+BASE_QUESTS = 3            # базовое количество квестов
+QUEST_REQUIREMENT = 100    # требование для контракта
+

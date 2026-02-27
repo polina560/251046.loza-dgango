@@ -74,10 +74,8 @@ class UserBonusItems(models.Model):
         if system_name == 'box':
             result = self._open_box(skip_coupon)
         elif system_name == 'glory':
-            #TODO: добавить метод add_glory в extra
             user_extra.add_glory(bonus.reward)
         elif system_name == 'money':
-            #TODO: добавить метод add_money в extra
             user_extra.add_money(bonus.reward)
         elif system_name == 'contract':
             user_extra.bonus_quests += bonus.reward

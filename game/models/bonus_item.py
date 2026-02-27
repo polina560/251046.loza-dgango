@@ -53,7 +53,6 @@ class BonusItem(models.Model):
             _check_player_stat(user.extra, self.system_name)
 
         if self.price and self.price > 0:
-            # TODO: добавить в user.extra метод spent_money
             user.extra.spent_money(self.price)
             user.extra.save()
 
@@ -61,7 +60,6 @@ class BonusItem(models.Model):
         user_item.buy_count += 1
         user_item.count += 1
 
-        # TODO: добавить метод instance_activate
         user_item.instance_activate()
         user_item.save()
 

@@ -1,6 +1,10 @@
+import time
+
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+
 
 
 class UserExtra(models.Model):
@@ -29,7 +33,6 @@ class UserExtra(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
 
     def calc_quests_generation(self):
-        """Аналог calcQuestsGeneration() в Laravel"""
         from django.utils import timezone
         from django.conf import settings
 
@@ -81,3 +84,112 @@ class UserExtra(models.Model):
 
         time_passed = (now - self.quests_updated_at).total_seconds()
         return max(int(cooldown - time_passed), 0)
+
+    def complete_quest(self):
+        """
+        Завершает один квест.
+        Аналог completeQuest() в Laravel.
+
+        Returns:
+            bool: True если квест успешно завершён
+        """
+        self.calc_quests_generation()
+
+        # Проверяем, есть ли доступные квесты
+        if not (self.quests + self.bonus_quests):
+            return False
+
+        # Используем обычные квесты в первую очередь
+        if self.quests > 0:
+            self.quests_updated_at = timezone.now()
+            self.quests -= 1
+            update_fields = ['quests', 'quests_updated_at']
+        else:
+            self.bonus_quests -= 1
+            update_fields = ['bonus_quests']
+
+        self.save(update_fields=update_fields)
+        return True
+
+    def add_money(self, amount):
+        """
+        Добавляет деньги пользователю.
+        Аналог addMoney() в Laravel.
+        """
+
+        self.money += amount
+        self.money_gain += amount
+        self.save(update_fields=['money', 'money_gain'])
+        # Обновляем значения из БД
+        self.refresh_from_db()
+
+    def spent_money(self, amount):
+        """
+        Списание денег у пользователя.
+        Аналог spentMoney() в Laravel.
+        """
+
+        self.money -= amount
+        self.money_spent += amount
+        self.save(update_fields=['money', 'money_spent'])
+        # Обновляем значения из БД
+        self.refresh_from_db()
+
+    def add_glory(self, amount):
+        """
+        Добавляет славу пользователю.
+        Аналог addGlory() в Laravel.
+        """
+
+        from game.models.stage import Stage
+        from game.models.user_rating import UserRating
+
+        if amount is None:
+            return
+
+        # Проверяем наличие клана у пользователя
+        if not hasattr(self.user, 'profile') or not self.user.profile.clan_id:
+            return
+
+        # Получаем текущий активный этап
+        try:
+            current_stage = Stage.objects.filter(
+                start_at__lte=timezone.now(),
+                end_at__gte=timezone.now()
+            ).order_by('-start_at').first()
+
+            if not current_stage:
+                return
+        except:
+            return
+
+        clan_id = self.user.profile.clan_id
+
+        # Пытаемся обновить существующую запись рейтинга
+        updated = UserRating.objects.filter(
+            user=self.user,
+            clan_id=clan_id,
+            stage=current_stage
+        ).update(
+            glory=models.F('glory') + amount,
+            glory_time=int(time.time())
+        )
+
+        # Если записи нет, создаём новую
+        if not updated:
+            UserRating.objects.create(
+                user=self.user,
+                clan_id=clan_id,
+                stage=current_stage,
+                glory=amount,
+                glory_time=int(time.time())
+            )
+
+        # Синхронизация имён методов для совместимости с Laravel
+
+    calcQuestsGeneration = calc_quests_generation
+    questsCooldown = quests_cooldown
+    completeQuest = complete_quest
+    addMoney = add_money
+    spentMoney = spent_money
+    addGlory = add_glory
