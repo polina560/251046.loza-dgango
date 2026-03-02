@@ -1,11 +1,6 @@
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-from game.enum.bonus_item_log_choices import BonusItemLogChoices
-from game.models.bonus_item_log import BonusItemLog
-from game.models.user_bonus_item import UserBonusItems
 
 
 def _check_player_stat(user, stat_name):
@@ -45,6 +40,9 @@ class BonusItem(models.Model):
 
 
     def buy(self, user):
+        from game.enum.bonus_item_log_choices import BonusItemLogChoices
+        from game.models.bonus_item_log import BonusItemLog
+        from game.models.user_bonus_item import UserBonusItems
         self._check_purchase_availability(user)
 
         user_item = UserBonusItems.objects.get_or_create(user=user, bonus=self, defaults={'count': 0, 'buy_count': 0, 'drop_count': 0})[0]

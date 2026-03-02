@@ -2,8 +2,12 @@ from rest_framework import serializers
 from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import User
-from .models import UserExtra, UserRating, BonusItem, Stage, Clan
-from .serializers import BonusItemSerializer
+
+from game.models.bonus_item import BonusItem
+from game.models.stage import Stage
+from game.models.user_extra import UserExtra
+from game.models.user_rating import UserRating
+from game.serializers.bonus_item_serializer import BonusItemSerializer
 
 
 class ProfileSerializer(serializers.ModelSerializer):

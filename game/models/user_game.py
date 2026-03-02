@@ -6,44 +6,22 @@ from django.db.models.enums import IntegerChoices
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
+from game.enum.game_plarform_choices import GamePlatform
+from game.enum.game_status_choices import GameStatus
 
-class GamePlatform(models.TextChoices):
-    """Платформы для игры (аналог Enum в Laravel)"""
-    SITE = 'site', _('Site')
-    MOBILE = 'mobile', _('Mobile')
-    TELEGRAM = 'telegram', _('Telegram')
-
-
-class GameStatus(models.TextChoices):
-    """Статусы игры (аналог Enum в Laravel)"""
-    NEW = 'new', _('New')
-    PAUSED = 'paused', _('Paused')
-    COMPLETED = 'completed', _('Completed')
-    ABORTED = 'aborted', _('Aborted')
 
 class UserGames(models.Model):
-    GAME_PLATFORM = (
-        (10, 'Site'),
-        (20, 'Application'),
-    )
 
-    GAME_STATUS = (
-        (0, 'New'),
-        (1, 'Completed'),
-        (2, 'Aborted'),
-        (3, 'Paused'),
-    )
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='games')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='games')
 
     started_at = models.DateTimeField(null=True, blank=True, verbose_name=_('Started At'))
     ended_at = models.DateTimeField(null=True, blank=True, verbose_name=_('Ended At'))
     paused_at = models.DateTimeField(null=True, blank=True, verbose_name=_('Paused At'))
-    pause_duration = models.IntegerField(null=True, verbose_name=_('Pause Duration'))
-    quest_completed = models.BooleanField(null=True, verbose_name=_('Quests Completed'))
-    status = models.SmallIntegerField(null=True, verbose_name=_('Status'), choices=GAME_STATUS)
+    pause_duration = models.IntegerField(default=0, verbose_name=_('Pause Duration'))
+    quest_completed = models.BooleanField(default=False, verbose_name=_('Quests Completed'))
+    status = models.SmallIntegerField(verbose_name=_('Status'), choices=GameStatus.choices, default=GameStatus.NEW)
     is_quest = models.BooleanField(default=False, verbose_name=_('Is Quest'))
-    platform = models.IntegerField(verbose_name=_ ('Platform'), choices=GAME_PLATFORM)
+    platform = models.IntegerField(verbose_name=_ ('Platform'), choices=GamePlatform.choices, default=GamePlatform.SITE)
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created At'))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))

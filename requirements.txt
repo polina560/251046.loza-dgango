@@ -17,3 +17,4 @@ pygments==2.19.2
 pytest==9.0.2
 django-jazzmin==3.0.1
 requests
+drf-spectacular==0.29.0

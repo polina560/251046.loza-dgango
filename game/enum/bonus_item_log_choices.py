@@ -10,5 +10,4 @@ class BonusItemLogChoices(models.IntegerChoices):
 
     @property
     def description(self):
-        """Возвращает описание (как метод description() в Laravel)"""
         return self.label

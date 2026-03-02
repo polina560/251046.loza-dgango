@@ -17,13 +17,16 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.shortcuts import redirect
 from django.urls import path, include
-from django.views.generic import RedirectView
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  # path('content/', include('content.urls')),
+                  # Схема OpenAPI (JSON/YAML)
+                  path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+
+                  # Swagger UI
+                  path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
                   path('game/', include('game.urls')),
                   # path('rating/', include('rating.urls')),
                   # path('log/', include('log.urls')),

@@ -128,6 +128,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'drf_spectacular',
     'game.apps.GameConfig',
 
 ]
@@ -203,6 +204,13 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded": False,
 }
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project API',
+    'DESCRIPTION': 'API documentation for your project',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
@@ -236,4 +244,8 @@ LOCALE_PATHS = (
 QUESTS_COOLDOWN_HOURS = 1  # часы до восстановления квеста
 BASE_QUESTS = 3            # базовое количество квестов
 QUEST_REQUIREMENT = 100    # требование для контракта
+
+BRISTOL_API_URL = 'http://localhost:8000/api'
+BRISTOL_API_LOGIN = 'login'
+BRISTOL_API_PASSWORD = 'password'
 
