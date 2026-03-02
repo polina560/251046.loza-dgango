@@ -180,26 +180,28 @@ def get_user_profile_properties():
 
     @property
     def extra(self):
-        """Доступ к UserExtra."""
+        """Доступ к UserExtra с автоматическим созданием."""
+
         from .user_extra import UserExtra
+
         try:
-            return self.extra_rel
+            # Пытаемся получить существующий объект через related name
+            return UserExtra.objects.get(user=self)
         except UserExtra.DoesNotExist:
+            # Если нет - создаем новый
             return UserExtra.objects.create(user=self)
 
     @property
     def profile(self):
-        """Доступ к UserProfile."""
+        """Доступ к UserProfile с автоматическим созданием."""
         try:
-            return self.profile_rel
+            return UserProfile.objects.get(user=self)
         except UserProfile.DoesNotExist:
-            # Автоматическое создание профиля при необходимости
             return UserProfile.objects.create(
                 user=self,
                 uid=f"UID{self.id}",
                 rid=f"RID{self.id}"
             )
-
     @property
     def current_glory(self):
         """Текущая слава пользователя."""

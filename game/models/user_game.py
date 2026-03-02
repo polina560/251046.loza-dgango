@@ -208,6 +208,8 @@ class UserGameManager:
             is_quest=state['is_quest']
         )
 
+        game.save()
+
         # Удаляем из сессии
         self._remove_state_from_session(user.id)
 

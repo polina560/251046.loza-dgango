@@ -58,15 +58,7 @@ class GameController(APIView):
         user = request.user
 
         # Получаем платформу из запроса
-        platform_value = request.data.get('platform', GamePlatform.SITE)
-
-        # Преобразуем в соответствующий enum
-        platform_map = {
-            0: GamePlatform.SITE,
-            1: GamePlatform.APPLICATION,
-            2: GamePlatform.TELEGRAM,
-        }
-        platform = platform_map.get(platform_value, GamePlatform.SITE)
+        platform = request.data.get('platform', GamePlatform.SITE)
 
         # Создаем менеджер и начинаем игру
         manager = UserGameManager(request)
