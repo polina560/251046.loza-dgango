@@ -22,20 +22,17 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
+
+                  # авторизация/регистрация пользовтал
                   path('auth/', include('dj_rest_auth.urls')),
                   path('auth/registration/', include('dj_rest_auth.registration.urls')),
-                  # Схема OpenAPI (JSON/YAML)
+
+                  # swagger
                   path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-
-                  # Swagger UI
                   path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-                  path('game/', include('game.urls')),
-                  # path('rating/', include('rating.urls')),
-                  # path('log/', include('log.urls')),
-                  # path('', RedirectView.as_view(url='/catalog/', permanent=True)),
 
-                  # path('admin/auth/user/', lambda request: redirect('/admin/account/customuser/')),
-                  # path('admin/auth/user/add/', lambda request: redirect('/admin/account/customuser/add/')),
+                  # API
+                  path('api/', include('game.urls')),
 
-                  # path('ckeditor/', include('ckeditor_uploader.urls')),
+
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
