@@ -183,6 +183,9 @@ class UserGameManager:
         # Удаляем из сессии
         self._remove_state_from_session(user.id)
 
+        game.save()
+
+
         return game
 
     def end(self, user, quest_completed=False):
