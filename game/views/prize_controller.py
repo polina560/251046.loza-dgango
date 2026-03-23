@@ -14,30 +14,6 @@ class PrizeView(APIView):
         summary="Список полученных призов",
         description="Возвращает список всех полученных призов, отсортированных по дате получения.",
         tags=['Prizes'],
-        parameters=[
-            OpenApiParameter(
-                name='limit',
-                type=int,
-                location='query',
-                description='Ограничить количество результатов (по умолчанию все)',
-                required=False,
-                default=100
-            ),
-            OpenApiParameter(
-                name='user_id',
-                type=int,
-                location='query',
-                description='Фильтр по ID пользователя',
-                required=False
-            ),
-            OpenApiParameter(
-                name='stage_id',
-                type=int,
-                location='query',
-                description='Фильтр по ID этапа',
-                required=False
-            ),
-        ],
         responses={
             200: {
                 'description': 'Список полученных призов',

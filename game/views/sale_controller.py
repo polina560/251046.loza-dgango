@@ -70,6 +70,4 @@ class SaleView(APIView):
         serializer = SaleSerializer(sales, many=True, context={'request': request})
 
 
-        return Response({
-            serializer.data
-        })
+        return Response(serializer.data)

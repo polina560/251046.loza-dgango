@@ -73,9 +73,9 @@ class ItemBuyView(APIView):
         request={
             'application/json': {
                 'type': 'object',
-                'required': ['id'],
+                'required': ['system_name'],
                 'properties': {
-                    'id': {
+                    'system_name': {
                         'type': 'string',
                         'description': 'System Name предмета',
                         'example': 'health_1'
@@ -115,7 +115,7 @@ class ItemBuyView(APIView):
         }
     )
     def post(self, request):
-        system_name = request.data.get('id')
+        system_name = request.data.get('system_name')
 
         if not system_name:
             return Response(
