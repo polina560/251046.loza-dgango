@@ -120,10 +120,9 @@ class RatingIndexView(APIView):
         else:
             ratings_qs = UserRating.objects.global_rating(stage_id)
 
-        # Добавляем select_related для оптимизации
-        ratings_qs = ratings_qs.select_related('user', 'clan').order_by_rating()
+        ratings_qs = ratings_qs.select_related('user', 'clan')
+        ratings_qs = ratings_qs.order_by('-glory', 'glory_time')
 
-        # Пагинация
         paginator = Paginator(ratings_qs, per_page)
 
         try:

@@ -6,6 +6,32 @@ from game.models.clan import Clan
 from game.models.stage import Stage
 
 
+class UserRatingManager(models.Manager):
+    """Кастомный менеджер для UserRating."""
+
+    def global_rating(self, stage_id):
+        """
+        Возвращает глобальный рейтинг пользователей для указанного этапа.
+        """
+        return self.filter(
+            stage_id=stage_id
+        ).select_related('user', 'clan')
+
+    def by_clan(self, stage_id, clan_id):
+        """
+        Возвращает рейтинг пользователей в конкретном клане.
+        """
+        return self.filter(
+            stage_id=stage_id,
+            clan_id=clan_id
+        ).select_related('user', 'clan')
+
+    def order_by_rating(self):
+        """
+        Сортировка по рейтингу (по убыванию славы, по возрастанию времени).
+        """
+        return self.order_by('-glory', 'glory_time')
+
 class UserRating(models.Model):
     user = models.OneToOneField(
         User,
@@ -32,6 +58,8 @@ class UserRating(models.Model):
         verbose_name=_('Glory Time'),
         help_text=_('Timestamp for sorting')
     )
+
+    objects = UserRatingManager()
 
     class Meta:
         verbose_name = _('User Rating')
