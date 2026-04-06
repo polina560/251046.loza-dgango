@@ -137,7 +137,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'ckeditor',
     'drf_spectacular',
-    'game.apps.GameConfig',
+    # 'game.apps.GameConfig',
 
 ]
 
@@ -211,9 +211,37 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 JAZZMIN_SETTINGS = {
-    # "hide_models": [
-    #     "promocode.promocode",
-    # ],
+    "hide_apps": ["socialaccount", "sites", "account", "authtoken"],
+    "custom_links": {
+        "auth": [
+            {
+                "name": "Email адреса",
+                "url": "admin:account_emailaddress_changelist",
+                "icon": "fas fa-envelope",
+                "permissions": ["account.view_emailaddress"]
+            },
+            {
+                "name": "Токены",
+                "url": "admin:authtoken_tokenproxy_changelist",
+                "icon": "fas fa-key",
+                "permissions": ["authtoken.view_tokenproxy"]
+            },
+        ]
+    },
+
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.User": "fas fa-user",
+        "auth.Group": "fas fa-users",
+    },
+
+    "order_with_respect_to": [
+        "auth",
+        "auth.User",
+        "auth.Group",
+        "Email адреса",
+        "ТокеныI",
+    ],
     "navigation_expanded": False,
 }
 
@@ -272,13 +300,6 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),)
 
 
-QUESTS_COOLDOWN_HOURS = 1  # часы до восстановления квеста
-BASE_QUESTS = 3            # базовое количество квестов
-QUEST_REQUIREMENT = 100    # требование для контракта
-
-BRISTOL_API_URL = 'http://localhost:8000/api'
-BRISTOL_API_LOGIN = 'login'
-BRISTOL_API_PASSWORD = 'password'
 
 
 SITE_ID = 1

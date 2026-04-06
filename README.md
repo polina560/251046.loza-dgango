@@ -24,3 +24,19 @@ django-admin compilemessages
 ```shell
 python manage.py showmigrations 
 ```
+Запустить все миграции
+- где appName - необязательный флаг, имя приложения, в котором нужно запустить миграции
+```shell
+python manage.py migrate {appName}
+```
+Создать миграции
+- где appName - необязательный флаг, имя приложения, в котором нужно запустить миграции
+```shell
+python manage.py makemigrations {appName}
+```
+Создать админа
+```shell
+python manage.py createsuperuser
+```
+
+
