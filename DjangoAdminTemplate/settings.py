@@ -137,7 +137,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'ckeditor',
     'drf_spectacular',
-    # 'game.apps.GameConfig',
+    'levels.apps.LevelsConfig',
 
 ]
 

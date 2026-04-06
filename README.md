@@ -4,6 +4,7 @@ pip install -r requirements.txt
 ```
 
 Активировация виртуальной среды
+python3 -m venv .venv
 - в PowerShell
 ```shell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -37,6 +38,10 @@ python manage.py makemigrations {appName}
 Создать админа
 ```shell
 python manage.py createsuperuser
+```
+Создать новое приложение
+```shell
+python manage.py startapp {appName}
 ```
 
 
