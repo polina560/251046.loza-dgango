@@ -11,48 +11,11 @@ msgstr "Дата создания"
 msgid "Updated at"
 msgstr "Дата изменения"
 
-# приложение Content
-msgid "Content"
-msgstr "Контент"
-
 msgid "Log"
 msgstr "Логи"
 
-msgid "Clans rating"
-msgstr "Рейтинг кланов"
-
-msgid "Clan rating"
-msgstr "Рейтинг кланов"
-
 msgid "Logs"
 msgstr "Логи"
-
-msgid "Bonus items"
-msgstr "Журнал предметов"
-
-msgid "Bonus item"
-msgstr "Журнал предметов"
-
-msgid "Rating"
-msgstr "Рейтинг"
-
-msgid "Shop"
-msgstr "Магаизн"
-
-msgid "Sales"
-msgstr "Товары акции"
-
-msgid "Coupon"
-msgstr "Купон"
-
-msgid "Coupons"
-msgstr "Купоны"
-
-msgid "User Game"
-msgstr "Логи игр"
-
-msgid "User Games"
-msgstr "Логи игр"
 
 msgid "Start Date"
 msgstr "Дата начала"
@@ -60,87 +23,14 @@ msgstr "Дата начала"
 msgid "Started At"
 msgstr "Время начала"
 
-msgid "Ended At"
-msgstr "Время окончания"
-
-msgid "Ended Date"
-msgstr "Время окончания"
-
-msgid "Paused At"
-msgstr "Пауза"
-
 msgid "Status"
 msgstr "Статус"
 
-msgid "Prize Date"
-msgstr "Заголовок"
-
-msgid "Prize Description"
-msgstr "Описание получения"
-
-msgid "User"
-msgstr "Пользователь"
-
-msgid "Glory"
-msgstr "Слава"
-
-msgid "Clan rating models"
-msgstr "Рейтинг кланов"
-
-msgid "Clan rating model"
-msgstr "Рейтинг кланов"
-
-msgid "Glory Time"
-msgstr "Время славы"
-
-msgid "User Ratings"
-msgstr "Рейтинг пользователей"
-
-msgid "Winners Sent"
-msgstr "Результаты отправлены"
-
-msgid "Quests Completed"
-msgstr "Выполнен контракт"
-
-msgid "Is Quest"
-msgstr "Контрактная"
-
-msgid "Pause Duration"
-msgstr "Продолжительность паузы"
-
-
-msgid "Rule Image"
-msgstr "Картинки правил"
-
-
-msgid "Rule Images"
-msgstr "Картинки правил"
-
-
-msgid "Game Settings"
-msgstr "Игровые настройки"
-
-# модель TextModel
 msgid "Text"
 msgstr "Текст"
 
-msgid "Game"
-msgstr "Игра"
-
-msgid "Source"
-msgstr "Источник"
-
-msgid "Bonus item"
-msgstr "Предемет"
-
-msgid "FAQ"
-msgstr "Вопросы и ответы"
-
-msgid "Texts"
-msgstr "Тексты"
-
-msgid "Coupon Number"
-msgstr "Номер купона"
+msgid "Image"
+msgstr "Изображение"
 
 msgid "Key"
 msgstr "Ключ"
@@ -148,36 +38,8 @@ msgstr "Ключ"
 msgid "Created"
 msgstr "Создан"
 
-msgid "Value"
-msgstr "Значение"
-
-# модель ClanModl
-msgid "Clans"
-msgstr "Кланы"
-
-msgid "Name"
-msgstr "Название"
-
-msgid "Bonus items"
-msgstr "Предметы"
-
 msgid "Title"
 msgstr "Название"
-
-msgid "Clan"
-msgstr "Клан"
-
-msgid "Stage"
-msgstr "Этап"
-
-msgid "Stages"
-msgstr "Этапы"
-
-msgid "Total Glory"
-msgstr "Общая слава"
-
-msgid "Clan rating models"
-msgstr "Рейтинг кланов"
 
 msgid "System Name"
 msgstr "Системное имя"
@@ -185,47 +47,39 @@ msgstr "Системное имя"
 msgid "Description"
 msgstr "Описание"
 
-msgid "Answer"
-msgstr "Ответ"
 
-msgid "Question"
-msgstr "Вопрос"
 
-msgid "Number"
-msgstr "Число"
+msgid "Cyclic Video"
+msgstr "Видеою Цикл"
 
-msgid "Date"
-msgstr "Дата"
+msgid "Processing Video"
+msgstr "Видео. Процесс"
 
-msgid "Image"
-msgstr "Изображение"
+msgid "Drop Video"
+msgstr "Видео. Падение ягоды"
 
-msgid "File"
-msgstr "Файл"
+msgid "Separate Video"
+msgstr "Видео. Переъод в сепаратор"
 
-msgid "Price"
-msgstr "Цена"
+msgid "Final Video"
+msgstr "Видео. Финал"
 
-msgid "Reward"
-msgstr "Размер награды"
+msgid "Reward Video"
+msgstr "Видео. Награда"
 
-msgid "Universal coupon"
-msgstr "Универсальный купон"
+msgid "Intro"
+msgstr "Интро"
 
-msgid "Is shop"
-msgstr "Для лавки"
+msgid "Dialogue"
+msgstr "Диалог"
 
-msgid "Is box"
-msgstr "Для сундука"
+msgid "Info"
+msgstr "Информационная сноска"
 
-msgid "Is system"
-msgstr "Создано системой"
+msgid "Hint"
+msgstr "Подсказка"
 
-msgid "Chance"
-msgstr "Шанс в сундуке"
 
-msgid "Position"
-msgstr "Позиция"
 
 
 

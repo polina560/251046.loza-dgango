@@ -32,7 +32,7 @@ urlpatterns = [
                   path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 
                   # API
-                  # path('api/', include('game.urls')),
+                  path('api/', include('levels.urls')),
 
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

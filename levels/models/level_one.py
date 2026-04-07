@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 class LevelOne(models.Model):
     title = models.CharField(verbose_name=_('Title'), max_length=255, null=True)
-    drop_video = models.FileField(verbose_name=_('Drop Video'), max_length=255, null=True)
+    drop_video = models.FileField(verbose_name=_(' Video'), max_length=255, null=True)
     separate_video = models.FileField(verbose_name=_('Separate Video'), max_length=255, null=True)
 
     info = models.TextField(verbose_name=_('Info'), null=True)
@@ -67,8 +67,8 @@ class LevelOneDialogueEnd(models.Model):
     updated_at = models.DateField(verbose_name=_('Updated at'), null=True, blank=True, auto_now=True)
 
     class Meta:
-        verbose_name = _('Dialogue')
-        verbose_name_plural = _('Dialogue')
+        verbose_name = _('Dialogue End')
+        verbose_name_plural = _('Dialogue End')
 
     def __str__(self):
         return self.id

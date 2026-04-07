@@ -1,6 +1,8 @@
 from django.urls import path
 
-urlpatterns = [
+from levels.views import IntroView
 
+urlpatterns = [
+    path('levels/intro/', IntroView.as_view(), name='intro'),
 
 ]
